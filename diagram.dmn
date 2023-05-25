@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="gruppe4" name="consumerJourney" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="14.1.1">
+  <decision id="decision_1cacbrr" name="Produkt Typ">
+    <informationRequirement id="InformationRequirement_0yukko7">
+      <requiredInput href="#InputData_067fl2u" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0o6fy2m">
+      <requiredInput href="#InputData_0qs7eot" />
+    </informationRequirement>
+    <decisionTable id="decisionTable_01g4x5d">
+      <input id="input1" label="" biodi:width="207">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>Verwndung</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_16o5xu5">
+        <inputExpression id="LiteralExpression_0t8q3e5" typeRef="string">
+          <text>Korperteil</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="" name="Produkt Typ" typeRef="string" />
+      <rule id="DecisionRule_1h2ietm">
+        <inputEntry id="UnaryTests_15ynk23">
+          <text>"zum Essen"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wzi1zh">
+          <text>"Mund"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0moowhg">
+          <text>"Schokolade"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ozs25b">
+        <inputEntry id="UnaryTests_048ctip">
+          <text>"SkinCare"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jc4u2n">
+          <text>"Gesicht"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0orss77">
+          <text>"Gesichtskreme"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_115qbpd">
+        <inputEntry id="UnaryTests_07h6imd">
+          <text>"SkinCare"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01liqqv">
+          <text>"Mund"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bmu1zd">
+          <text>"Lippenstift"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_067fl2u" name="Verwendung" />
+  <inputData id="InputData_0qs7eot" name="Korper" />
+  <inputData id="InputData_0pg96t1" name="Honig Typ" />
+  <inputData id="InputData_13r6ue6" name="Quantitat" />
+  <decision id="Decision_1fvrdp1" name="Honig">
+    <informationRequirement id="InformationRequirement_0ng3sq9">
+      <requiredInput href="#InputData_0pg96t1" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1hxemxf">
+      <requiredInput href="#InputData_13r6ue6" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0v9w0ff">
+      <input id="InputClause_049detj">
+        <inputExpression id="LiteralExpression_1npdhh6" typeRef="string">
+          <text>Honig Typ</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1srx96s" biodi:width="192">
+        <inputExpression id="LiteralExpression_1vd0op8" typeRef="number">
+          <text>Quantitat</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0605fsh" name="Honig" typeRef="string" />
+      <rule id="DecisionRule_0239jiz">
+        <inputEntry id="UnaryTests_0pa97vx">
+          <text>Akazienhonig</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1852nk4">
+          <text>400</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1foma6i">
+          <text>AkH-400</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02hssue">
+        <inputEntry id="UnaryTests_0ybg5hz">
+          <text>Sonnenblumenhonig</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oljh2b">
+          <text>200</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l8yai7">
+          <text>SH-200</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14o4wkb">
+        <inputEntry id="UnaryTests_0qju10l">
+          <text>Rapshonig</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05qelfc">
+          <text>250</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_179gm1q">
+          <text>RH-250</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ofy0cb">
+        <inputEntry id="UnaryTests_0eso2ky">
+          <text>BlutenHonig</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qbekm5">
+          <text>400</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15fn9ip">
+          <text>BH-400</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0g1mv8u" name="Produkt">
+    <informationRequirement id="InformationRequirement_02u3dhe">
+      <requiredDecision href="#decision_1cacbrr" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0miq7sn">
+      <requiredDecision href="#Decision_1fvrdp1" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_17crkmh">
+      <input id="InputClause_13rilh4">
+        <inputExpression id="LiteralExpression_05y8qo2" typeRef="string">
+          <text>Produkt typ</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1eel9e8">
+        <inputExpression id="LiteralExpression_1wgvrww" typeRef="string">
+          <text>Honig</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_069pw36" name="Produkt" typeRef="string" />
+      <rule id="DecisionRule_1m9u3hw">
+        <inputEntry id="UnaryTests_02hyxcr">
+          <text>"Lippenstift"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02h53uq">
+          <text>"BH-400"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ho5xnq">
+          <text>"Lippenstift BH-4"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ivzelj">
+        <inputEntry id="UnaryTests_0kn0bnd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lzgq7y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_07l9vui">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1l2gg9q">
+      <dmndi:DMNShape id="DMNShape_1l0hc6m" dmnElementRef="decision_1cacbrr">
+        <dc:Bounds height="80" width="180" x="200" y="330" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1sqmtkr" dmnElementRef="InputData_067fl2u">
+        <dc:Bounds height="45" width="125" x="157" y="517" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1t662zi" dmnElementRef="InformationRequirement_0yukko7">
+        <di:waypoint x="220" y="517" />
+        <di:waypoint x="260" y="430" />
+        <di:waypoint x="260" y="410" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_14e5eoh" dmnElementRef="InputData_0qs7eot">
+        <dc:Bounds height="45" width="125" x="298" y="517" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ksob61" dmnElementRef="InformationRequirement_0o6fy2m">
+        <di:waypoint x="361" y="517" />
+        <di:waypoint x="320" y="430" />
+        <di:waypoint x="320" y="410" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_11jszcy" dmnElementRef="InputData_0pg96t1">
+        <dc:Bounds height="45" width="125" x="517" y="517" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18gxcr4" dmnElementRef="InformationRequirement_0ng3sq9">
+        <di:waypoint x="580" y="517" />
+        <di:waypoint x="620" y="430" />
+        <di:waypoint x="620" y="410" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1lk2kuy" dmnElementRef="InputData_13r6ue6">
+        <dc:Bounds height="45" width="125" x="657" y="517" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0ibybfx" dmnElementRef="InformationRequirement_1hxemxf">
+        <di:waypoint x="720" y="517" />
+        <di:waypoint x="680" y="430" />
+        <di:waypoint x="680" y="410" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jqmlma" dmnElementRef="Decision_1fvrdp1">
+        <dc:Bounds height="80" width="180" x="560" y="330" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1kgfski" dmnElementRef="InformationRequirement_02u3dhe">
+        <di:waypoint x="290" y="330" />
+        <di:waypoint x="450" y="180" />
+        <di:waypoint x="450" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_18gdu6r" dmnElementRef="InformationRequirement_0miq7sn">
+        <di:waypoint x="650" y="330" />
+        <di:waypoint x="510" y="180" />
+        <di:waypoint x="510" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_16kmmwu" dmnElementRef="Decision_0g1mv8u">
+        <dc:Bounds height="80" width="180" x="390" y="80" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
